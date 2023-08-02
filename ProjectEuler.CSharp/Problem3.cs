@@ -7,16 +7,17 @@ public class Problem3
     static long BiggestPrimeFactor(long number)
     {
         var n = 1L;
+        var result = 0L;
 
         foreach (var prime in GetAllPrimesOf(number))
         {
             n *= prime;
 
             if (n == number)
-                return prime;
+                result = prime;
         }
 
-        throw new Exception();
+        return result;
     }
 
     static IEnumerable<long> GetAllPrimesOf(long number)
