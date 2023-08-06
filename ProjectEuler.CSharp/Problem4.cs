@@ -8,7 +8,7 @@ public class Problem4
     {
         var max = int.Parse(string.Concat(Enumerable.Repeat("9", digits)));
         var range = Enumerable.Range(0, max + 1);
-        return range.SelectMany(x => range, (a, b) => a * b).Where(x => IsPalindrome(x));
+        return range.SelectMany(x => range, (a, b) => a * b).Where(IsPalindrome);
     }
 
     static bool IsPalindrome(int number)
