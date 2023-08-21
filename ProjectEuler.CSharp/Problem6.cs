@@ -2,10 +2,17 @@
 
 public class Problem6
 {
-    public static int Solve(int max) => SquareOfSum(max) - SumOfSquares(max);
+    [Fact]
+    public void TestSolve()
+    {
+        Assert.Equal(2640, Solve(10));
+        Assert.Equal(25164150, Solve(100));
+    }
 
-    static int SumOfSquares(int max) =>
+    private static int Solve(int max) => SquareOfSum(max) - SumOfSquares(max);
+
+    private static int SumOfSquares(int max) =>
         Enumerable.Range(0, max + 1).Select(i => (int)Math.Pow(i, 2)).Sum();
 
-    static int SquareOfSum(int max) => (int)Math.Pow(Enumerable.Range(0, max + 1).Sum(), 2);
+    private static int SquareOfSum(int max) => (int)Math.Pow(Enumerable.Range(0, max + 1).Sum(), 2);
 }

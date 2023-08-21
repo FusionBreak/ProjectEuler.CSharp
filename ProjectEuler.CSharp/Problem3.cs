@@ -2,9 +2,12 @@
 
 public class Problem3
 {
-    public static long Calc(long number) => BiggestPrimeFactor(number);
+    [Fact]
+    public void TestCalc() => Assert.Equal(6857, Solve(600851475143));
 
-    static long BiggestPrimeFactor(long number)
+    private static long Solve(long number) => BiggestPrimeFactor(number);
+
+    private static long BiggestPrimeFactor(long number)
     {
         var n = 1L;
         var result = 0L;
@@ -20,7 +23,7 @@ public class Problem3
         return result;
     }
 
-    static IEnumerable<long> GetAllPrimesOf(long number)
+    private static IEnumerable<long> GetAllPrimesOf(long number)
     {
         for (long prime = 2; prime <= number; prime++)
             if (number % prime == 0)

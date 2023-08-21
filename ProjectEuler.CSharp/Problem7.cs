@@ -2,10 +2,17 @@
 
 public class Problem7
 {
-    public static long Solve(int index) =>
+    [Fact]
+    public void TestSolve()
+    {
+        Assert.Equal(13, Solve(6));
+        Assert.Equal(104743, Solve(10_001));
+    }
+
+    private static long Solve(int index) =>
         Range(0, int.MaxValue).Where(IsPrime).Skip(index - 1).First();
 
-    public static bool IsPrime(long number)
+    private static bool IsPrime(long number)
     {
         if (number <= 1)
             return false;
@@ -16,14 +23,14 @@ public class Problem7
 
         var boundary = (int)Math.Floor(Math.Sqrt(number));
 
-        for (int i = 3; i <= boundary; i += 2)
+        for (var i = 3; i <= boundary; i += 2)
             if (number % i == 0)
                 return false;
 
         return true;
     }
 
-    static IEnumerable<long> Range(int start, long count)
+    private static IEnumerable<long> Range(int start, long count)
     {
         var end = start + count;
         for (var current = start; current < end; ++current)
